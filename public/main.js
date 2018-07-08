@@ -3,17 +3,18 @@ var thumbDown = document.getElementsByClassName("fa-thumbs-down");
 var trash = document.getElementsByClassName("fa-trash");
 
 Array.from(thumbUp).forEach(function(element) {
-  console.log(element)
       element.addEventListener('click', function(){
         const name = this.parentNode.parentNode.childNodes[1].innerText
         const msg = this.parentNode.parentNode.childNodes[3].innerText
-        const thumbUp = parseFloat(this.parentNode.parentNode.childNodes[5].innerText)
-        fetch('messages', {
+        const team = this.parentNode.parentNode.childNodes[5].innerText
+        const thumbUp = parseFloat(this.parentNode.parentNode.childNodes[7].innerText)
+        fetch('comments', {
           method: 'put',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({
             'name': name,
             'msg': msg,
+            'team': team,
             'thumbUp':thumbUp
           })
         })
@@ -31,14 +32,16 @@ Array.from(thumbDown).forEach(function(element) {
       element.addEventListener('click', function(){
         const name = this.parentNode.parentNode.childNodes[1].innerText
         const msg = this.parentNode.parentNode.childNodes[3].innerText
-        const thumbDown = parseFloat(this.parentNode.parentNode.childNodes[7].innerText)
-        fetch('messages2', {
+        const team = this.parentNode.parentNode.childNodes[5].innerText
+        const thumbUp = parseFloat(this.parentNode.parentNode.childNodes[7].innerText)
+        fetch('thumbDown', {
           method: 'put',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({
             'name': name,
             'msg': msg,
-            'thumbDown': thumbDown
+            'team': team,
+            'thumbUp': thumbUp
           })
         })
         .then(response => {
@@ -55,14 +58,16 @@ Array.from(trash).forEach(function(element) {
       element.addEventListener('click', function(){
         const name = this.parentNode.parentNode.childNodes[1].innerText
         const msg = this.parentNode.parentNode.childNodes[3].innerText
-        fetch('messages', {
+        const team = this.parentNode.parentNode.childNodes[5].innerText
+        fetch('comments', {
           method: 'delete',
           headers: {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
             'name': name,
-            'msg': msg
+            'msg': msg,
+            'team': team
           })
         }).then(function (response) {
           window.location.reload()

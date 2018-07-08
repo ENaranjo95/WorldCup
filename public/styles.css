@@ -1,6 +1,47 @@
+*{
+  box-sizing: border-box;
+}
 body{
-  background: red;
+  padding-bottom: 5%;
+  background-color: lightblue;
+  text-align: center;
+}
+.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+.qtr{
+  width: 23%;
+  margin: 10px 1% 10px 1%;
+  float: left;
+}
+.flag{
+  width: 60%;
+  display: inline-block;
+}
+.left{
+  height: 100px;
+  width: 100%;
+  border: 1px solid black;
+  float: left;
+}
+.right{
+  height: 100px;
+  width: 100%;
+  border: 1px solid black;
+  float: right;
 }
 h3{
+  font-size: 2rem;
   margin-top: 40px;
+}
+.comment{
+  list-style-type: none;
+}
+.comment span{
+  margin-right: 30px;
 }
